@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style type="text/css">
+form{
+  background-color: black;
+  color: white;
+}
+body{
+  background-color:lightblue;
+}
+  
+</style>
+
+<body>
+{% extends "base.html" %}
+{% block title %}shorten URL{% endblock %}
+
+{% block content %}<body><br><center>
+   <form action="{{ url_for('home') }}", method="post">
+      <ul class="nav">
+  <li class="nav-item">
+    <div class="topnav-right">
+    <a class="nav-link active" href="{{url_for('display_all')}}"><h3>History</h3></a></div>
+  </li>
+  </ul>
+    <label for="url"><h4>Enter URL</label>
+    <input type="url" name="nm" id="url"
+       placeholder="https://example.com"
+       pattern="https://.*" size="50"
+       required></h4>
+    <input type="submit" value="submit" class="btn btn-primary"><br><br>
+<br><br><label for="Short_url"><h4>Short URL</label>
+<input type="text" value="http://127.0.0.1:5000/{{short_url_display}}" id="myInput" size="40">
+<button onclick="myFunction()" class="btn btn-primary">Click Here To Copy
+</button></h4>
+<script>
+function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.value);
+  
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+}</script>
+</form></center>
+{% endblock %}
+</body>

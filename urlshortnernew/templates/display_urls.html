@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+
+{% extends "base.html" %}
+{% block title %}View all URLS{% endblock %}
+
+{% block content %}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+body{
+  background-color: lightblue;
+  color: black;
+
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+h2{
+  
+  color: black;
+  text-align: center;
+}
+th{
+  background-color: black;
+  color: white;
+  font-family: italic;
+}
+</style>
+</head>
+<body>
+
+<h2>History Table</h2>
+
+    
+<table border="2" >
+  <tr>
+    <th>Short_URL</th>
+    <th>Orginal_URL</th>
+  </tr>
+  <tr>{% for url in vals %}
+    <td>http://127.0.0.1:5000/{{url.short}}</td>
+    <td>{{url.long}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+        
+        <ul class="nav">
+  <li class="nav-item">
+    <div class="topnav-right">
+    <a class="nav-link active" href="{{url_for('home')}}"><h3>Back To Home</h3></a></div>
+  </li>
+  </ul>
+{% endblock %}
